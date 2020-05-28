@@ -152,3 +152,4 @@ class LoginView(FormView):
 ```
 
 데이터베이스에 존재하는 useremail과 register에서 email이 중복될 시 예외처리 필요.
+static login.css 추가해서 로그인 회원가입 페이지 간단하게 리팩토링

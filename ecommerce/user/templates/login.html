@@ -1,7 +1,11 @@
 {% extends "base.html" %}
-
+{%block head %}
+<link rel="stylesheet" href="/static/login.css">
+{% endblock %}
 {% block contents %}
-<h1>로그인</h1>
+<div class="sign-up-form">
+<h1>LOGIN</h1>
+<h4>sangjuntech ecommerce</h2>
 
 {{ error }}
 <form method='POST' action=".">
@@ -17,4 +21,5 @@
     <button type="submit">로그인</button>
 
 </form>
+</div>
 {% endblock %}

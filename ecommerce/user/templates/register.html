@@ -1,6 +1,10 @@
 {% extends "base.html" %}
+{%block head %}
+<link rel="stylesheet" href="/static/login.css">
+{% endblock %}
 {% block contents %}
-<h1>회원가입</h1>
+<div class="sign-up-form">
+<h1>Register</h1>
 
 {{ error }}
 <form method='POST' action=".">
@@ -13,9 +17,10 @@
     <span> {{ field.errors }} </span>
     {% endif %}
     {% endfor %}
-    <button type="submit">회원가입</button>
+    <button type="submit">Sign in</button>
 
 </form>
+</div>
 
 
 
