@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block contents %}
+<h1>회원가입</h1>
+
+{{ error }}
+<form method='POST' action=".">
+    {% csrf_token %}
+    {% for field in form %}
+    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+    <input type="{{ field.field.widget.input_type }}" id="{{ field.id_for_label }}"
+    placeholder="{{ field.label }}" name="{{ field.name }}"/>
+    {% if field.errors %}
+    <span> {{ field.errors }} </span>
+    {% endif %}
+    {% endfor %}
+    <button type="submit">회원가입</button>
+
+</form>
+
+
+
+{% endblock %}
