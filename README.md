@@ -7,7 +7,7 @@
 상품, 사용자, 주문 모델 db 생성 및 migration 완료
 ecommerce settings.py에 앱 등록 완료
 
-user
+#### user
 ```
 from django.db import models
 
@@ -21,7 +21,7 @@ class user(models.Model):
         verbose_name = '사용자'
         verbose_name_plural = '사용자'
 ```
-product
+#### product
 ```
 from django.db import models
 
@@ -37,7 +37,7 @@ class Product(models.Model):
         verbose_name = '상품'
         verbose_name_plural = '상품'
 ```
-order
+#### order
 ```
 from django.db import models
 
@@ -57,7 +57,7 @@ admin 사이트 빌드
 
 register 폼 및 path 연결
 
-폼
+#### 폼
 ```
 from django import forms
 
@@ -82,13 +82,13 @@ class RegisterForm(forms.Form):
     )
 ```
 
-url 연결
+#### url 연결
 ```
 path('register/', RegisterView.as_view())
 ```
 
-폼을 이용해 register.html 에 폼 형식 전달 후 검증로직 생성
-register 페이지를 통해 정보 저장
+#### 폼을 이용해 register.html 에 폼 형식 전달 후 검증로직 생성
+#### register 페이지를 통해 정보 저장
 ```
 def clean(self):
         cleaned_data = super().clean()
@@ -109,7 +109,7 @@ def clean(self):
 ```
 로그인 html 생성 및 로직 빌드
 
-로그인 폼
+#### 로그인 폼
 ```
 class LoginForm(forms.Form):
     email = forms.EmailField(
@@ -143,7 +143,7 @@ class LoginForm(forms.Form):
                 self.user_id = user.id
 ```
 
-로그인 뷰
+#### 로그인 뷰
 ```
 class LoginView(FormView):
     template_name = 'login.html'
@@ -153,3 +153,49 @@ class LoginView(FormView):
 
 데이터베이스에 존재하는 useremail과 register에서 email이 중복될 시 예외처리 필요.
 static login.css 추가해서 로그인 회원가입 페이지 간단하게 리팩토링
+
+#### 프로덕트 뷰 생성
+```
+from django.shortcuts import render
+from django.views.generic import ListView
+from .models import Product
+
+class ProductList(ListView):
+    model = Product
+    template_name = 'product.html'
+```
+
+#### 프로덕트 폼 생성
+
+```
+from django import forms
+from .models import Product
+
+class RegisterForm(forms.Form):
+    name = forms.CharField(
+        error_messages={
+            'required': '상품명을 입력해주세요.'
+        },
+        max_length=64, label='상품명'
+    )
+    price = forms.IntegerField(
+        error_messages={
+            'required': '가격을 입력해주세요.'
+        },
+         label='가격'
+    )
+    description = forms.CharField(
+        error_messages={
+            'required': '설명을 입력해주세요.'
+        },
+        label='제품설명'
+    )
+    stuck = forms.IntegerField(
+        error_messages={
+            'required': '재고를 입력해주세요'
+        },
+        label='재고'
+    )
+```
+
+productRegister 생성

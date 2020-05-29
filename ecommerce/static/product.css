@@ -1,0 +1,54 @@
+.product_info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    margin-left: 30px;
+    margin-bottom: 30px;
+    width: 180px;
+    padding: 30px;
+    box-shadow: 4px 8px 12px darkgrey;
+    border-radius: 30px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.product_description {
+    margin-top: 30px;
+    font-size: 12px;
+}
+
+.product_info:hover {
+    background-color: dodgerblue;
+}
+
+.product_name {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    margin-bottom: 40px;
+    background-color: dodgerblue;
+    font-size: 40px;
+    font-weight: 600;
+}
+
+.registerday {
+    font-size: 10px;
+    color: gray;
+    font-weight: 600;
+    margin-top: 30px;
+}

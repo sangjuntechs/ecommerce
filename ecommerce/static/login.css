@@ -52,6 +52,7 @@ button {
     background-color: dodgerblue;
     font-weight: 700;
     transition: 0.2s;
+    margin-bottom: 30px;
 }
 
 h4 {
