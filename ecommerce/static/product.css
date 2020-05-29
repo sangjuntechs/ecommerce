@@ -1,17 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 .product_info {
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     flex-direction: column;
-    margin-left: 30px;
-    margin-bottom: 30px;
     width: 180px;
     padding: 30px;
     box-shadow: 4px 8px 12px darkgrey;
     border-radius: 30px;
     transition: 0.5s;
     cursor: pointer;
+    border: 1px solid darkgray;
+    margin: 20px;
 }
 
 .container {
@@ -28,7 +33,10 @@
 
 .product_info:hover {
     background-color: dodgerblue;
+    color: white;
 }
+
+
 
 .product_name {
     font-size: 20px;
@@ -44,6 +52,7 @@ header {
     background-color: dodgerblue;
     font-size: 40px;
     font-weight: 600;
+    color: white;
 }
 
 .registerday {
