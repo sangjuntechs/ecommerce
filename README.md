@@ -199,3 +199,8 @@ class RegisterForm(forms.Form):
 ```
 
 productRegister 생성
+
+전체적인 레이아웃 css 수정 및 ui 수정
+모델 데이터베이스 저장 및 admin 정상작동 확인
+로그인 회원가입 상품등록 및 출력 확인
+settings.py 타임존 아시아로 변경 완료
