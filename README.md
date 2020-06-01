@@ -8,7 +8,7 @@
 ecommerce settings.py에 앱 등록 완료
 
 #### user
-```
+```ts
 from django.db import models
 
 class user(models.Model):
@@ -22,7 +22,7 @@ class user(models.Model):
         verbose_name_plural = '사용자'
 ```
 #### product
-```
+```ts
 from django.db import models
 
 class Product(models.Model):
@@ -38,7 +38,7 @@ class Product(models.Model):
         verbose_name_plural = '상품'
 ```
 #### order
-```
+```ts
 from django.db import models
 
 class Order(models.Model):
@@ -58,7 +58,7 @@ admin 사이트 빌드
 register 폼 및 path 연결
 
 #### 폼
-```
+```ts
 from django import forms
 
 class RegisterForm(forms.Form):
@@ -83,13 +83,13 @@ class RegisterForm(forms.Form):
 ```
 
 #### url 연결
-```
+```ts
 path('register/', RegisterView.as_view())
 ```
 
 #### 폼을 이용해 register.html 에 폼 형식 전달 후 검증로직 생성
 #### register 페이지를 통해 정보 저장
-```
+```ts
 def clean(self):
         cleaned_data = super().clean()
         email = cleaned_data.get('email')
@@ -110,7 +110,7 @@ def clean(self):
 로그인 html 생성 및 로직 빌드
 
 #### 로그인 폼
-```
+```ts
 class LoginForm(forms.Form):
     email = forms.EmailField(
         error_messages={
@@ -144,7 +144,7 @@ class LoginForm(forms.Form):
 ```
 
 #### 로그인 뷰
-```
+```ts
 class LoginView(FormView):
     template_name = 'login.html'
     form_class = LoginForm
@@ -155,7 +155,7 @@ class LoginView(FormView):
 static login.css 추가해서 로그인 회원가입 페이지 간단하게 리팩토링
 
 #### 프로덕트 뷰 생성
-```
+```ts
 from django.shortcuts import render
 from django.views.generic import ListView
 from .models import Product
@@ -167,7 +167,7 @@ class ProductList(ListView):
 
 #### 프로덕트 폼 생성
 
-```
+```ts
 from django import forms
 from .models import Product
 
@@ -207,7 +207,7 @@ settings.py 타임존 아시아로 변경 완료
 
 #### 프로덕트 디테일
 
-```
+```ts
 class ProductDetail(DetailView):
     template_name = 'product_detail.html'
     queryset = Product.objects.all()

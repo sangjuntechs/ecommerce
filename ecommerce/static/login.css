@@ -78,17 +78,21 @@ li {
     color: red;
     font-size: 12px;
 }
+
+
+a:hover {
+    color: rgb(212, 18, 212);
+}
+
+
+
 a {
     all: unset;
     color: steelblue;
     font-size: 12px;
     cursor: pointer;
-    margin-left: 38px;
     margin-top: 10px;
     transition: 0.5s;
-}
-
-a:hover {
-    color: rgb(212, 18, 212);
+    text-align: center;
 }
 
