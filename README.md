@@ -204,3 +204,14 @@ productRegister 생성
 모델 데이터베이스 저장 및 admin 정상작동 확인
 로그인 회원가입 상품등록 및 출력 확인
 settings.py 타임존 아시아로 변경 완료
+
+#### 프로덕트 디테일
+
+```
+class ProductDetail(DetailView):
+    template_name = 'product_detail.html'
+    queryset = Product.objects.all()
+    context_object_name = 'product'
+```
+url 연결
+pk를 이용해 제품별 세부페이지 생성 및 링크연결

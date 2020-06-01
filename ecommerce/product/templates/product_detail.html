@@ -1,18 +1,19 @@
 {% extends "base.html" %}
 {% load humanize %}
 {%block head %}
-<link rel="stylesheet" href="/static/product.css">
+<link rel="stylesheet" href="/static/detail.css">
 {% endblock %}
 {% block contents %}
 <header>sangjuntech Ecommerce</header>
 <div class="container">
-{% for product in object_list %}
-    <div onclick="location.href='/product/{{ product.pk }}'" class="product_info">
+
+    <div class="product_info">
         <div class="product_name">{{product.name}}</div>
         <div class="product_price">{{product.price|intcomma}} won </div>
+        <div class="product_description">제품설명: {{product.description}}</div>
         <div class="registerday">등록일자: {{ product.register_date|date:'Y-m-d H:i' }}</div>
-        <div class="product_key">ProductNum: {{product.pk}}</div>
+        <a href="/product/">상품목록으로</a>
     </div>
-{% endfor %}
+
 </div>
 {% endblock %}

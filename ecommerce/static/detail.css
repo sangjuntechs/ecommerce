@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    margin-bottom: 40px;
+    background-color: dodgerblue;
+    font-size: 40px;
+    font-weight: 600;
+    color: white;
+}
+
+.product_info {
+    text-align: center;
+}
+
+.product_name {
+    font-size: 30px;
+    font-weight: 700;
+
+}
+
+.product_price {
+    font-size: 20px;
+    font-weight: 600;
+    color: gray;
+    margin-top: 20px;
+}
+
+.product_description {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    
+}
