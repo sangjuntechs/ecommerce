@@ -215,3 +215,82 @@ class ProductDetail(DetailView):
 ```
 url 연결
 pk를 이용해 제품별 세부페이지 생성 및 링크연결
+
+
+#### 오더 뷰
+```ts
+class OrderCreate(FormView):
+    form_class = RegisterForm
+    success_url = '/product/'
+
+    def form_invalid(self, form):
+        return redirect('/product/' + str(form.product))
+
+
+    def get_form_kwargs(self, **kwargs):
+        kw = super().get_form_kwargs(**kwargs)
+        kw.update({
+            'request': self.request
+        })
+        return kw
+```
+
+세션에 따른 처리 오더 폼
+
+```ts
+class RegisterForm(forms.Form):
+    
+    def __init__ (self, request, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.request = request
+      
+    
+    quantity = forms.IntegerField(
+        error_messages={
+            'required': '상품의 개수를 입력하세요.'
+        },
+        label='수량'
+    )
+
+    product = forms.IntegerField(
+        error_messages={
+            'required': '설명을 입력해주세요.'
+        },
+        label='제품설명', widget=forms.HiddenInput
+        )
+   
+
+
+    def clean(self):
+        cleaned_data = super().clean()
+        quantity = cleaned_data.get('quantity')
+        product = cleaned_data.get('product')
+        user = self.request.session.get('user')
+
+        if quantity and product and user:
+            order = Order(
+                quantity = quantity,
+                product = Product.objects.get(pk=product),
+                user = User.objects.get(email = user)
+            )
+            order.save()
+        else:
+            self.product = product
+            self.add_error('quantity', '수량을 입력하세요.')
+            self.add_error('product', '값이 없습니다.')
+```
+
+django.db transaction 을 활용한 재고관리
+
+```ts
+with transaction.atomic():
+                prod = Product.objects.get(pk=product)
+                order = Order(
+                    quantity = quantity,
+                    product = prod,
+                    user = User.objects.get(email = user)
+                )
+                order.save()
+                prod.stuck -= quantity
+                prod.save()
+```
