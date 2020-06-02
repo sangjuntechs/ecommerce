@@ -14,11 +14,11 @@
         <div class="registerday">등록일자: {{ product.register_date|date:'Y-m-d H:i' }}</div>
         <a href="/product/">상품목록으로</a>
         <div class="order_box">
-            <form method="POST", action='/order/create'>
+            <form class="order_form" method="POST", action='/order/create'>
                 {% csrf_token %}
                 {% for field in form %}
                 {% ifnotequal field.name 'product' %}
-                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                <label class="order_label "for="{{ field.id_for_label }}">{{ field.label }}</label>
                 {% endifnotequal %}
                 <input type="{{ field.field.widget.input_type }}" id="{{ field.id_for_label }}"
                     placeholder="{{ field.label }}" name="{{ field.name }}" 
@@ -27,7 +27,7 @@
                 <span> {{ field.errors }} </span>
                 {% endif %}
                 {% endfor %}
-                <button type="submit">주문하기</button>
+                <button class="order_btn" type="submit">주문하기</button>
             </form>
         </div>
     </div>

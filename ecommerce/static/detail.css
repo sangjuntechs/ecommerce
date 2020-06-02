@@ -37,3 +37,44 @@ header {
     margin-bottom: 30px;
     
 }
+.order_label {
+    font-size: 16px;
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+input {
+    padding: 5px;
+    margin-right: 20px;
+}
+.order_box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+.order_form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.order_btn {
+    all: unset;
+    padding: 10px;
+    background-color: dodgerblue;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    color: white;
+    transition: 0.5s;
+}
+
+.order_btn:hover {
+    background-color: yellowgreen;
+}
+
+.registerday {
+    margin-bottom: 10px;
+}
