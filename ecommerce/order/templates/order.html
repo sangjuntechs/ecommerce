@@ -1,16 +1,21 @@
 {% extends "base.html" %}
 {% load humanize %}
 {%block head %}
-
+<link rel="stylesheet" href="/static/orderlist.css">
 {% endblock %}
 {% block contents %}
 <header>sangjuntech Ecommerce</header>
-<div class="container">
 {% for order in object_list %}
+<div class="card">
+<div class="orderuser">{{order.user}}님의 주문목록</div>
+<div class="container">
+    <div class="contents">
         <div class="order_product">제품: {{order.product}}</div>
         <div class="order_quantity">수량: {{order.quantity|intcomma}}개</div>
         <div class="registerday">주문일시: {{ order.register_date|date:'Y-m-d H:i' }}</div>
     </div>
+</div>
 {% endfor %}
+</div>
 </div>
 {% endblock %}
