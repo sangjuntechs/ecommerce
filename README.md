@@ -294,3 +294,23 @@ with transaction.atomic():
                 prod.stuck -= quantity
                 prod.save()
 ```
+
+#### 주문 리스트 뷰 
+
+```ts
+class OrderList(ListView):
+    template_name = 'order.html'
+    context_object_name = 'order_list'
+
+    def get_queryset(self, **kwargs):
+        queryset = Order.objects.filter(user__email = self.request.session.get('user'))
+        return queryset
+```
+
+#### 세션에 따른 정보 필터
+
+```ts
+def get_queryset(self, **kwargs):
+        queryset = Order.objects.filter(user__email = self.request.session.get('user'))
+        return queryset
+```
