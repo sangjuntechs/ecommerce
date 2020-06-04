@@ -314,3 +314,39 @@ def get_queryset(self, **kwargs):
         queryset = Order.objects.filter(user__email = self.request.session.get('user'))
         return queryset
 ```
+
+#### 데코레이터를 사용한 유저에 대한 세션이 없으면 주문리스트 -> 로그인 리다이렉트
+
+```ts
+from django.shortcuts import redirect
+
+def login_required(function):
+    def wrap(request, *args, **kwargs):
+        user = request.session.get('user')
+        if user is None or not user :
+            return redirect ('/login')
+        return function(request, *args, **kwargs)
+
+    return wrap
+```
+
+로그아웃 url 추가
+
+#### 유저레벨 admin, user models 생성 및 admin_required decorator 생성 권한 설정 ProductCreate에 @method_decorator
+
+```ts
+def admin_required(function):
+    def wrap(request, *args, **kwargs):
+        user = request.session.get('user')
+        if user is None or not user :
+            return redirect ('/login')
+
+        user = User.objects.get(email=user)
+        if user.level != 'admin':
+            return redirect ('/')
+
+
+        return function(request, *args, **kwargs)
+
+    return wrap
+```

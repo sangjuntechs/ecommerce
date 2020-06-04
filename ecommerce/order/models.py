@@ -1,6 +1,7 @@
 from django.db import models
 
 class Order(models.Model):
+    objects = models.Manager()
     user = models.ForeignKey('user.User', on_delete=models.CASCADE, verbose_name="사용자")
     product = models.ForeignKey('product.Product', on_delete=models.CASCADE, verbose_name='상품')
     quantity = models.IntegerField(verbose_name='수량')

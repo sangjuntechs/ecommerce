@@ -1,9 +1,13 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import FormView
 from django.views.generic import ListView
+from django.utils.decorators import method_decorator
 from .forms import RegisterForm
 from .models import Order
+from user.decorators import login_required
 
+
+@method_decorator(login_required, name="dispatch")
 class OrderCreate(FormView):
     form_class = RegisterForm
     success_url = '/product/'
@@ -19,7 +23,7 @@ class OrderCreate(FormView):
         })
         return kw
 
-
+@method_decorator(login_required, name="dispatch")
 class OrderList(ListView):
     template_name = 'order.html'
     context_object_name = 'order_list'

@@ -19,12 +19,14 @@ from user.views import index, RegisterView, LoginView
 from product.views import ProductList,ProductCreate,ProductDetail
 from order.views import OrderCreate
 from order.views import OrderList
+from user.views import logout
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index),
     path('register/', RegisterView.as_view()),
     path('login/', LoginView.as_view()),
+    path('logout/', logout),
     path('product/', ProductList.as_view()),
     path('product/<int:pk>/', ProductDetail.as_view()),
     path('product/create/', ProductCreate.as_view()),
