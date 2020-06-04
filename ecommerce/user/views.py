@@ -6,6 +6,10 @@ def index(request):
     return render(request,'index.html',{'email' : request.session.get('user') })
 
 
+def loginsuccess(request):
+    return render(request,'loginsuccess.html',{'email' : request.session.get('user') })
+    
+
 class RegisterView(FormView):
     template_name = 'register.html'
     form_class = RegisterForm
@@ -27,3 +31,5 @@ def logout(request):
         del(request.session['user'])
 
     return redirect('/')
+
+
