@@ -350,3 +350,5 @@ def admin_required(function):
 
     return wrap
 ```
+
+브랜치 desk1 index, loginsuccess화면 구분 및 css작업
