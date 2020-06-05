@@ -1,12 +1,19 @@
 {% extends "base.html" %}
 {%block head %}
-
+<link rel="stylesheet" href="/static/index.css">
 {% endblock %}
 {% block contents %}
-반갑습니다. {{ email }} 님.
-<a href="/login">로그인</a>
-<a href="/register">회원가입</a>
-<a href="/logout">로그아웃</a>
-<a href="/product">상품보기</a>
-<a href="/order/list">주문 정보 보기</a>
+<div class="nav">
+    <div class="copy">sangjuntech
+        <div>E-Commerce</div>
+    </div>
+    <div class="contents">
+        <div class="user">환영합니다.</div>
+        <a href="/login">로그인</a>
+        <a href="/register">회원가입</a>
+        <a href="/logout">로그아웃</a>
+        <a href="/product">상품보기</a>
+        <a href="/order/list">주문 정보 보기</a>
+    </div>
+</div>
 {% endblock %}

@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.nav {
+    background-color: dodgerblue;
+    padding: 30px;
+}
+
+.contents {
+    display: flex;
+    position: absolute;
+    right: 5px;
+}
+
+.copy {
+    font-weight: 600;
+}
+
+a {
+    all: unset;
+    margin-right: 10px;
+    cursor: pointer;
+    color: purple;
+    transition: 0.6s;
+}
+
+.user {
+    font-weight: 600;
+    margin-right: 5px;
+}
+
+a:hover {
+    color: black;
+}
